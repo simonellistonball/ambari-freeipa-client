@@ -2,7 +2,7 @@ import sys, os, pwd, signal, time, socket
 from resource_management import *
 from subprocess import call
 
-class Slave(Script):
+class Client(Script):
   def install(self, env):
     # Install packages listed in metainfo.xml
     self.install_packages(env)
