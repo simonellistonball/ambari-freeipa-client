@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<metainfo>
+    <schemaVersion>2.0</schemaVersion>
+    <services>
+        <service>
+            <name>FREEIPACLIENT</name>
+            <displayName>FreeIPA client</displayName>
+            <comment>FreeIPA client</comment>
+            <version>1.0.0</version>
+            <components>
+              <component>
+                <name>FREEIPA_CLIENT</name>
+                <displayName>FreeIPA client</displayName>
+                <category>CLIENT</category>
+                <cardinality>1+</cardinality>
+                <commandScript>
+                  <script>scripts/client.py</script>
+                  <scriptType>PYTHON</scriptType>
+                  <timeout>5000</timeout>
+                </commandScript>
+                <dependencies>
+                  <dependency>
+                    <name>FREEIPA/FREEIPA_MASTER</name>
+                    <scope>cluster</scope>
+                    <auto-deploy>
+                      <enabled>false</enabled>
+                    </auto-deploy>
+                  </dependency>
+                </dependencies>
+              </component>
+            </components>
+            <osSpecifics>
+              <osSpecific>
+                <osFamily>redhat6</osFamily>
+                <packages>
+                  <package><name>*ipa-client</name></package>
+                </packages>
+              </osSpecific>
+
+              <osSpecific>
+                <osFamily>redhat7</osFamily>
+                <packages>
+                  <package><name>*ipa-client</name></package>
+                </packages>
+              </osSpecific>
+
+            </osSpecifics>
+      	    <configuration-dependencies>
+        	      <config-type>freeipa-config</config-type>
+      	    </configuration-dependencies>
+            <restartRequiredAfterChange>false</restartRequiredAfterChange>
+        </service>
+    </services>
+</metainfo>
